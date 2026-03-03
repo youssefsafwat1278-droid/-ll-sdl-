@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\ScoutImageController;
 use App\Http\Controllers\Admin\UserRegistrationController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
@@ -60,13 +60,9 @@ Route::middleware(['auth', 'user'])->group(function () {
     
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
-    
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
-    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
     Route::get('/notifications', [HomeController::class, 'notifications'])->name('notifications.index');
     Route::post('/notifications/{notification}/read', [HomeController::class, 'markAsRead'])->name('notifications.read');
-    
 });
 
 Route::middleware('auth')->group(function () {
