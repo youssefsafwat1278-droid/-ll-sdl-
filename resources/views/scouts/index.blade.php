@@ -109,9 +109,9 @@
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <div class="w-full bg-[#12002b] rounded-full h-1.5 mb-1 overflow-hidden">
-                                    <div class="bg-blue-500 h-full" style="width: {{ ($scout->local_ownership_count / 3) * 100 }}%"></div>
+                                    <div class="bg-blue-500 h-full" style="width: {{ ($scout->local_ownership_count / 7) * 100 }}%"></div>
                                 </div>
-                                <div class="text-[9px] text-gray-500 flex justify-between"><span>محلي</span><span>{{ $scout->local_ownership_count }}/3</span></div>
+                                <div class="text-[9px] text-gray-500 flex justify-between"><span>محلي</span><span>{{ $scout->local_ownership_count }}/7</span></div>
                             </div>
                             <div>
                                 <div class="w-full bg-[#12002b] rounded-full h-1.5 mb-1 overflow-hidden">

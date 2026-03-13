@@ -174,7 +174,7 @@ class Scout extends Model
             return 20;
         }
 
-        return $this->isLocalOwner($user) ? 3 : 5;
+        return $this->isLocalOwner($user) ? 7 : 5;
     }
 
     public function canBeOwnedBy(User $user, bool $ignoreLimits = false): bool
@@ -188,7 +188,7 @@ class Scout extends Model
         }
 
         if ($this->isLocalOwner($user)) {
-            return (int) $this->local_ownership_count < 3;
+            return (int) $this->local_ownership_count < 7;
         }
 
         return (int) $this->external_ownership_count < 5;
@@ -233,7 +233,7 @@ class Scout extends Model
             return;
         }
 
-        $this->is_available = (int) $this->local_ownership_count < 3
+        $this->is_available = (int) $this->local_ownership_count < 7
             || (int) $this->external_ownership_count < 5;
     }
 

@@ -1,4 +1,4 @@
-﻿<!-- resources/views/team-builder.blade.php -->
+<!-- resources/views/team-builder.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'بناء الفريق - Scout Tanzania')
@@ -235,10 +235,10 @@
                                          <div class="px-1.5 py-1 rounded border flex items-center gap-1"
                                               :class="[
                                                   scout.is_local_match ? 'bg-blue-500/10 border-blue-500/30' : 'bg-black/30 border-white/10',
-                                                  scout.local_ownership_count >= 3 ? 'text-red-400 border-red-500/50' : 'text-gray-400'
+                                                  scout.local_ownership_count >= 7 ? 'text-red-400 border-red-500/50' : 'text-gray-400'
                                               ]">
                                              <span :class="scout.is_local_match ? 'text-blue-400' : ''">Local:</span>
-                                             <span class="font-bold text-white" x-text="scout.local_ownership_count"></span><span class="opacity-50">/3</span>
+                                             <span class="font-bold text-white" x-text="scout.local_ownership_count"></span><span class="opacity-50">/7</span>
                                          </div>
                                          <!-- External -->
                                           <div class="px-1.5 py-1 rounded border flex items-center gap-1"

@@ -259,10 +259,10 @@
                                                             <div class="px-1.5 py-1 rounded border flex items-center gap-1"
                                                                 :class="[
                                                                     scout.is_local_match ? (darkMode ? 'bg-blue-500/10 border-blue-500/30' : 'bg-blue-50 border-blue-200') : (darkMode ? 'bg-black/30 border-white/10' : 'bg-gray-100 border-gray-200'),
-                                                                    scout.local_ownership_count >= 3 ? 'text-red-500 border-red-500/50' : (darkMode ? 'text-gray-400' : 'text-gray-500')
+                                                                    scout.local_ownership_count >= 7 ? 'text-red-500 border-red-500/50' : (darkMode ? 'text-gray-400' : 'text-gray-500')
                                                                 ]">
                                                                 <span :class="scout.is_local_match ? 'text-blue-500 font-bold' : ''">L:</span>
-                                                                <span class="font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'" x-text="scout.local_ownership_count"></span><span class="opacity-50">/3</span>
+                                                                <span class="font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'" x-text="scout.local_ownership_count"></span><span class="opacity-50">/7</span>
                                                             </div>
                                                             <!-- External -->
                                                             <div class="px-1.5 py-1 rounded border flex items-center gap-1"
