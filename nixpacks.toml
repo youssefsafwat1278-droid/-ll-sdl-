@@ -1,9 +1,0 @@
-[phases.setup]
-aptPkgs = ["libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libzip-dev"]
-
-[phases.install]
-cmds = [
-    "docker-php-ext-configure gd --with-freetype --with-jpeg",
-    "docker-php-ext-install gd zip",
-    "composer install --optimize-autoloader --no-scripts --no-interaction"
-]
