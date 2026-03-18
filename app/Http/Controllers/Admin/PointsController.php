@@ -181,6 +181,16 @@ class PointsController extends Controller
         return back()->with('success', 'تم حذف نقاط الجولة بنجاح.');
     }
 
+    public function downloadTemplate(Request $request)
+    {
+        $gameweekId = $request->get('gameweek_id');
+        $gameweek = Gameweek::findOrFail($gameweekId);
+        
+        $fileName = "points_template_gw{$gameweek->gameweek_number}.xlsx";
+        
+        return Excel::download(new \App\Exports\PointsTemplateExport($gameweekId), $fileName);
+    }
+
     public function uploadExcel(Request $request)
     {
         $request->validate([
