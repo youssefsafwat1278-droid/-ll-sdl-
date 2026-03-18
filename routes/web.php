@@ -76,11 +76,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::get('/attendance-stats', [SummaryController::class, 'attendanceStats'])->name('attendance-stats');
 
     Route::get('/points', [PointsController::class, 'index'])->name('points.index');
+    Route::get('/points/download-template', [PointsController::class, 'downloadTemplate'])->name('points.template');
+    Route::post('/points/upload-excel', [PointsController::class, 'uploadExcel'])->name('points.upload');
     Route::get('/points/{scout}', [PointsController::class, 'show'])->name('points.show');
     Route::post('/points', [PointsController::class, 'store'])->name('points.store');
     Route::delete('/points/{scout}', [PointsController::class, 'destroy'])->name('points.destroy');
-    Route::get('/points/download-template', [PointsController::class, 'downloadTemplate'])->name('points.template');
-    Route::post('/points/upload-excel', [PointsController::class, 'uploadExcel'])->name('points.upload');
     
     Route::post('/gameweeks', [GameweekManagementController::class, 'store'])->name('gameweeks.store');
     Route::put('/gameweeks/{gameweek}', [GameweekManagementController::class, 'update'])->name('gameweeks.update');
