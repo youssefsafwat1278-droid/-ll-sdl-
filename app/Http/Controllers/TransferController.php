@@ -26,7 +26,9 @@ class TransferController extends Controller
                 'hasGameweek' => false,
                 'message' => 'لا يوجد أسبوع نشط حالياً.',
                 'currentTeam' => collect(),
+                'currentTeamScouts' => collect(),
                 'availableScouts' => collect(),
+                'patrols' => collect(),
                 'freeHitActive' => false,
             ]);
         }

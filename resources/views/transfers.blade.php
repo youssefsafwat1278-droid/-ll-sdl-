@@ -183,7 +183,7 @@
                                             <div class="font-mono font-bold" :class="darkMode ? 'text-[#04f5ff]' : 'text-blue-600'">{{ $member->scout->current_price }}</div>
                                         </div>
                                         <div class="flex items-center gap-2 mt-1">
-                                            <span class="text-[10px] px-2 py-0.5 rounded" :class="darkMode ? 'bg-white/10 text-gray-300' : 'bg-gray-200 text-gray-600'">{{ $member->scout->patrol->patrol_name }}</span>
+                                            <span class="text-[10px] px-2 py-0.5 rounded" :class="darkMode ? 'bg-white/10 text-gray-300' : 'bg-gray-200 text-gray-600'">{{ $member->scout->patrol->patrol_name ?? '-' }}</span>
                                             <span class="text-[10px] uppercase" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">{{ $member->scout->role }}</span>
                                         </div>
                                     </div>
