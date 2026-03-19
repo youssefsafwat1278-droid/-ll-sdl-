@@ -36,25 +36,40 @@ class TeamController extends Controller
                     'displayTotalPoints' => 0,
                     'teamGameweekPoints' => 0,
                     'currentGameweek' => null,
+                    'team' => collect(),
+                    'captain' => null,
+                    'viceCaptain' => null,
+                    'tripleCapUsed' => false,
+                    'hasUsedTripleCapBefore' => false,
+                    'freeHitActive' => false,
+                    'hasUsedFreeHitBefore' => false,
                 ]);
             }
 
             $displayTotalPoints = (int) $user->total_points;
 
-            // محاولة الحصول على آخر جولة للمستخدم
             $latestGameweekPoint = UserGameweekPoint::where('user_id', $user->id)
                 ->orderBy('gameweek_id', 'desc')
                 ->first();
 
             $teamGameweekPoints = $latestGameweekPoint ? $latestGameweekPoint->team_points : 0;
 
-            return view('my-team', compact(
-                'team',
-                'user',
-                'displayTotalPoints',
-                'teamGameweekPoints',
-                'currentGameweek'
-            ));
+            $captain = $team->where('is_captain', true)->first();
+            $viceCaptain = $team->where('is_vice_captain', true)->first();
+
+            return view('my-team', [
+                'team' => $team,
+                'user' => $user,
+                'displayTotalPoints' => $displayTotalPoints,
+                'teamGameweekPoints' => $teamGameweekPoints,
+                'currentGameweek' => $currentGameweek,
+                'captain' => $captain,
+                'viceCaptain' => $viceCaptain,
+                'tripleCapUsed' => false,
+                'hasUsedTripleCapBefore' => false,
+                'freeHitActive' => false,
+                'hasUsedFreeHitBefore' => false,
+            ]);
         }
 
         $hasTeam = $user->hasTeamForGameweek($currentGameweek->id);

@@ -1,4 +1,4 @@
-﻿<!-- resources/views/my-team.blade.php -->
+<!-- resources/views/my-team.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'فريقي - Scout Tanzania')
@@ -56,7 +56,7 @@
             <h2 class="text-4xl font-black font-['Changa'] drop-shadow-lg tracking-wide"
                 :class="darkMode ? 'text-white' : 'text-gray-900'">{{ $user->team_name }}</h2>
             <div class="font-bold text-lg mt-1"
-                 :class="darkMode ? 'text-[#04f5ff]' : 'text-blue-600'">Gameweek {{ $currentGameweek->number ?? '-' }}</div>
+                 :class="darkMode ? 'text-[#04f5ff]' : 'text-blue-600'">Gameweek {{ $currentGameweek->gameweek_number ?? '-' }}</div>
         </div>
         
         <a href="{{ route('transfers') }}" class="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-[#e90052] font-['Changa'] rounded-lg hover:bg-[#ff005a] hover:shadow-[0_0_20px_#e90052] focus:outline-none ring-offset-2 focus:ring-2">
@@ -152,7 +152,7 @@
                                             <div class="text-[6px] sm:text-xs truncate font-bold leading-none mb-0.5"
                                                  :class="darkMode ? 'text-white' : 'text-gray-900'">{{ $player->scout->first_name }}</div>
                                             <div class="text-[5px] sm:text-[10px] truncate leading-none opacity-80"
-                                                 :class="darkMode ? 'text-gray-300' : 'text-gray-600'">{{ $player->scout->patrol->patrol_name }}</div>
+                                                 :class="darkMode ? 'text-gray-300' : 'text-gray-600'">{{ $player->scout->patrol->patrol_name ?? '-' }}</div>
                                         </div>
 
                                         <!-- Points -->
@@ -207,7 +207,7 @@
                                     </div>
                                     <div>
                                         <div>{{ $member->scout->full_name }}</div>
-                                        <div class="text-[10px] opacity-60" :class="darkMode ? 'text-gray-300' : 'text-gray-500'">{{ $member->scout->patrol->patrol_name }}</div>
+                                        <div class="text-[10px] opacity-60" :class="darkMode ? 'text-gray-300' : 'text-gray-500'">{{ $member->scout->patrol->patrol_name ?? '-' }}</div>
                                     </div>
                                 </td>
                                 <td class="px-4 py-2 text-[10px] sm:text-xs">
@@ -231,7 +231,7 @@
         <!-- Actions Grid (Captain/Chips) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 sm:mt-8">
             <!-- Captaincy -->
-            @if(isset($currentGameweek) && !$currentGameweek->isDeadlinePassed())
+            @if(isset($currentGameweek) && $currentGameweek && !$currentGameweek->isDeadlinePassed())
             <div class="backdrop-blur-xl border rounded-xl p-4 sm:p-6"
                  :class="darkMode ? 'bg-[#1a0b2e]/60 border-white/10' : 'bg-white border-gray-200 shadow-md'">
                  <h3 class="text-base font-bold mb-4 border-b pb-2"
@@ -355,7 +355,7 @@
     @endif
 </div>
 
-@if(isset($currentGameweek) && !$currentGameweek->isDeadlinePassed())
+@if(isset($currentGameweek) && $currentGameweek && !$currentGameweek->isDeadlinePassed())
     @push('scripts')
     <script>
     document.addEventListener('DOMContentLoaded', function() {
