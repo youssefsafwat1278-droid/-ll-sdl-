@@ -83,6 +83,10 @@ class AuthController extends Controller
             return back()->withErrors(['scout_id' => 'هذا الكشاف مسجل بالفعل.'])->withInput();
         }
 
+        if ($user && $user->role === 'admin') {
+            return back()->withErrors(['scout_id' => 'عملية غير مصرح بها.'])->withInput();
+        }
+
         if ($user) {
             $user->update([
                 'password' => $request->password,

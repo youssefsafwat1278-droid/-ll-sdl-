@@ -63,7 +63,7 @@ class SettingsController extends Controller
             }
 
             $file = $request->file('photo');
-            $filename = 'user_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'user_' . $user->id . '_' . time() . '.' . $file->extension();
 
             // Move file to public/images/users
             $file->move(public_path('images/users'), $filename);

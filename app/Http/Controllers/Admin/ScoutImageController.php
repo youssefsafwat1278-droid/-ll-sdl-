@@ -45,7 +45,7 @@ class ScoutImageController extends Controller
         // Upload new photo
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $filename = 'scout_' . $scout . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'scout_' . $scout . '_' . time() . '.' . $file->extension();
 
             // Move file to public/images/scouts
             $file->move(public_path('images/scouts'), $filename);
@@ -115,7 +115,7 @@ class ScoutImageController extends Controller
         // Upload new logo
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
-            $filename = 'patrol_' . $patrol . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'patrol_' . $patrol . '_' . time() . '.' . $file->extension();
 
             // Move file to public/images/patrols
             $file->move(public_path('images/patrols'), $filename);
