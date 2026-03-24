@@ -33,7 +33,6 @@ class User extends Authenticatable
         'language',
         'notifications_enabled',
         'profile_public',
-        'role',
         'last_login',
     ];
 
